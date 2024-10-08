@@ -4,7 +4,9 @@ class AuthService {
   constructor() {}
 
   async logInFn({ username, password }) {
-    if (username == process.env.USERNAME && password == process.env.PASSWORD) {
+    console.log(password, username);
+    console.log(process.env.USERNAME, process.env.PASSWORD);
+    if (username == process.env.ADMIN && password == process.env.PASSWORD) {
       const accessToken = signAccessToken({ id:Date.now() });
       return { accessToken };
     }
