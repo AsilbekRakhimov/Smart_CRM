@@ -8,6 +8,6 @@ export const ErrorHandlerMiddleware = (err, _, res, __) => {
   }
   res.status(500).send({
     name: err.name,
-    message: "Server bilan bog'liq xatolik",
+    message:err.message + " :Server bilan bog'liq xatolik",
   });
 };
