@@ -4,6 +4,7 @@ import { appConfig } from "./config/app.config.js";
 import { mongo } from "./db/mongo.db.js";
 import router from "./routes/index.routes.js";
 import { ErrorHandlerMiddleware } from "./middlewares/error-handler.middleware.js";
+import cors from "cors";
 
 const app = express();
 
@@ -14,6 +15,8 @@ process.on("uncaughtException", (err) => {
 process.on("unhandledRejection", (reason, promise) => {
   process.exit(1);
 });
+
+app.use(cors({ origin: "*" }));
 
 await mongo();
 
