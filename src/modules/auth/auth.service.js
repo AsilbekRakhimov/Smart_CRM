@@ -1,19 +1,14 @@
 import { signAccessToken } from "../../helpers/sign-tokens.jwt.helper.js";
-import { authModel } from "./auth.schema.js";
 
 class AuthService {
-  #_authModel;
-  constructor() {
-    this.#_authModel = authModel;
-  }
+  constructor() {}
 
   async logInFn({ username, password }) {
-    const admin = await this.#_authModel.create({
-      username,
-      password,
-    });
-    const accessToken = signAccessToken({ id: admin.id });
-    return { accessToken };
+    if (username == process.env.USERNAME && password == process.env.PASSWORD) {
+      const accessToken = signAccessToken({ id:Date.now() });
+      return { accessToken };
+    }
+    return null;
   }
 }
 
