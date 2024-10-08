@@ -8,6 +8,7 @@ class AuthController {
 
   logIn = async (req, res, next) => {
     try {
+      console.log(req);
       const data = await this.#_authService.logInFn(req.body);
       if (!data) {
         res.status(404).send({
